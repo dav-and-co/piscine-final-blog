@@ -14,10 +14,8 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $Id = null;
-
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull(['message' => 'ne doit pas être nul'])]
     private ?string $Title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -32,13 +30,6 @@ class Category
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $Id): static
-    {
-        $this->Id = $Id;
-
-        return $this;
     }
 
     public function getTitle(): ?string
