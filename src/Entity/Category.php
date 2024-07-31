@@ -16,16 +16,16 @@ class Category
 
     #[ORM\Column(length: 255)]
     #[Assert\NotNull(['message' => 'ne doit pas être nul'])]
-    private ?string $Title = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $color = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $created_date = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $update_date = null;
+    private ?\DateTimeInterface $updateAt = null;
 
     public function getId(): ?int
     {
@@ -34,12 +34,12 @@ class Category
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): static
+    public function setTitle(string $title): static
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
@@ -56,26 +56,26 @@ class Category
         return $this;
     }
 
-    public function getCreatedDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_date;
+        return $this->createdAt;
     }
 
-    public function setCreatedDate(\DateTimeInterface $created_date): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->created_date = $created_date;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdateDate(): ?\DateTimeInterface
+    public function getUpdateAt(): ?\DateTimeInterface
     {
-        return $this->update_date;
+        return $this->updateAt;
     }
 
-    public function setUpdateDate(\DateTimeInterface $update_date): static
+    public function setUpdateAt(\DateTimeInterface $updateAt): static
     {
-        $this->update_date = $update_date;
+        $this->updateAt = $updateAt;
 
         return $this;
     }
