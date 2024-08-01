@@ -1,0 +1,31 @@
+
+
+
+{% extends 'gdPublic/partial/GdPublicHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    blog : les articles
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <main>
+        <h1> Liste des catégories </h1>
+        <div class="document">
+            {% for category in categories %}
+
+                    <div class="articles">
+                        <article class="article">
+                            <h1 class="titre">  {{ category.title }}</h1>
+                            <h2 class="titre"> <a class="pale" href ="{{ path( 'GdPublicArticles-oneCat',{id: category.id})}}">Articles de cette catégorie</a></h2>
+                        </article>
+                    </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+
+{% endblock %}
+
+

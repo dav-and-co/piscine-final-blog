@@ -1,0 +1,44 @@
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ asset('style/articlesStyle.css') }}">
+    <title> {% block metatitle %} {% endblock %} </title>
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<header>
+    <div class="image">
+        <img src="{{ asset('img/blog2.png') }}" alt="blog">
+    </div>
+    <div class="central">
+        <h3>LE BLOG de la PISCINE</h3>
+        <ul>
+            <li><a href="{{ path("home") }}"> Accueil </a> </li>
+            <li><a href="{{ path("GdPublicArticles") }}"> Les articles </a></li>
+            <li><a href="{{ path("GdPublicCategory") }}"> Les catégories</a></li>
+            <li> Connexion</li>
+        </ul>
+    </div>
+    <div class="image">
+        <img src="{{ asset('img/blog1.png') }}" alt="">
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <img src="{{ asset('img/blog3.png') }}" alt="">
+        <div>
+            <ul>
+                <li>Mentions légales</li>
+                <li>contact</li>
+                <li>Crédits</li>
+                <li>et tout le reste</li>
+            </ul>
+        </div>
+    </footer>
+</body>

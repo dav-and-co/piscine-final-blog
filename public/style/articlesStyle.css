@@ -1,0 +1,135 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+header{
+    display: flex;
+    background-color:  #b45f5d;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    & img{
+        width : 100%;
+    }
+    & .image{
+        width : 10%;
+    }
+    & .central{
+        width : 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    & h3{
+        text-align: center;
+        font-family: fantasy;
+        font-size: 48px;
+        color: #fbeec1;
+        margin :15px 0;
+        width: 100% ;
+
+    }
+    li {
+        list-style: none;
+    }
+    & ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    & a{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #fbeec1;
+    }
+}
+
+footer{
+    background-color: #b45f5d;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & img{
+        width : 5%;
+    }
+    & p{
+        width : 20%;
+    }
+    li {
+        list-style: none;
+    }
+    & div{
+        width : 90%;
+    }
+    & ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+body{
+    background-color: #eddcbf;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        & h1{
+        text-align: center;
+        font-family: fantasy;
+        font-size: 48px;
+        color: black;
+        margin :15px 0;
+        width: 100% ;
+    }
+    & .document{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+    & .articles{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 32%;
+        margin: 0 auto;
+    }
+    & .article{
+        background-color: #d99872;
+        border: 2px solid white ;
+        width: 90%;
+        text-align: center;
+        margin: 10px;
+        color: black;
+        padding : 0 15px;
+        box-shadow: 5px 7px 18px -1px rgba(94, 110, 153,.4);
+        border-radius: 500px;
+        & a{
+        color: #b45f5d;
+        }
+        & .image {
+            width: 30%;
+            margin: auto;
+            & img {
+                width: 100%;
+            }
+       }
+        & p {
+            flex:1;
+            text-align:center;
+        }
+    }
+    .bigerror{
+        width: 80%;
+        display: flex;
+        margin: auto;
+    }
+    .error{
+        width: 30%;
+        margin: auto;
+    }
+}
