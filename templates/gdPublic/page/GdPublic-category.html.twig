@@ -17,7 +17,7 @@
 
                     <div class="articles">
                         <article class="article">
-                            <h1 class="titre">  {{ category.title }}</h1>
+                            <h1 style="color: {{ category.color }}" class="titre">  {{ category.title }}</h1>
                             <h2 class="titre"> <a class="pale" href ="{{ path( 'GdPublicArticles-oneCat',{id: category.id})}}">Articles de cette catégorie</a></h2>
                         </article>
                     </div>

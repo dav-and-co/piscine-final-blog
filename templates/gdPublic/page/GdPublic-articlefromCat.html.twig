@@ -11,7 +11,7 @@
 
 <body>
     <main>
-        <h1> Liste des Articles de la catégorie : {{ title }}</h1>
+        <h1> Liste des Articles de la catégorie : <span style="color: {{ category.color }}"> {{ title }}</span></h1>
         <div class="document">
             {% for article in category.articles %}
             {% if article.isPublished %}

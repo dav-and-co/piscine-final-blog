@@ -5,13 +5,12 @@
 declare(strict_types=1);
 
 // on crée un namespace qui permet d'identifier le chemin afin d'utiliser la classe actuelle
-namespace App\Controller;
+namespace App\Controller\GdPublic;
 
 // on appelle le chemin (namespace) des classes utilisées et symfony fera le require de ces classes
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
