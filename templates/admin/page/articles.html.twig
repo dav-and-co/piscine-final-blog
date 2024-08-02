@@ -4,22 +4,37 @@
 {% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
 
 {% block metatitle %}
-    blog : les articles
+    admin : les articles
 {% endblock %}
 
 {% block content %}
 
 
-    <main>
         <h1> Liste des Articles </h1>
         <section class="admin-list-articles">
             <table class="admin-article-table">
                 <tr>
-                    <td>catégorie</td>
-                    <td>Id</td>
+                    <td> Catégorie <a href ="{{ path( 'adminArticles')}}?tri=category&ordre=ASC">
+                            <i class="fa-solid fa-chevron-up"></i></a>
+                        <a href ="{{ path( 'adminArticles')}}?tri=category&ordre=DESC">
+                            <i class="fa-solid fa-chevron-down"></i></a>
+                    </td>
+                    <td> Id  <a href ="{{ path( 'adminArticles')}}?tri=id&ordre=ASC">
+                            <i class="fa-solid fa-chevron-up"></i></a>
+                        <a href ="{{ path( 'adminArticles')}}?tri=id&ordre=DESC">
+                            <i class="fa-solid fa-chevron-down"></i></a>
+                    </td>
                     <td>Image</td>
-                    <td>Titre</td>
-                    <td>Date</td>
+                    <td> Titre <a href ="{{ path( 'adminArticles')}}?tri=title&ordre=ASC">
+                            <i class="fa-solid fa-chevron-up"></i></a>
+                                <a href ="{{ path( 'adminArticles')}}?tri=title&ordre=DESC">
+                            <i class="fa-solid fa-chevron-down"></i></a>
+                    </td>
+                    <td> Date  <a href ="{{ path( 'adminArticles')}}?tri=createdAt&ordre=ASC">
+                            <i class="fa-solid fa-chevron-up"></i></a>
+                        <a href ="{{ path( 'adminArticles')}}?tri=createdAt&ordre=DESC">
+                            <i class="fa-solid fa-chevron-down"></i></a>
+                    </td>
                     <td>Est publié</td>
                     <td>à supprimer</td>
                 </tr>
@@ -43,7 +58,7 @@
                 {% endfor %}
             </table>
         </section>
-    </main>
+
 
 
 {% endblock %}

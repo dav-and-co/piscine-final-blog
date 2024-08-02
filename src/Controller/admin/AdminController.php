@@ -11,6 +11,7 @@ namespace App\Controller\admin;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,12 +25,20 @@ class AdminController extends AbstractController
 
     // function qui récupère les données de la BDD
     #[Route('/admin/Articles', name: 'adminArticles')]
-    public function GdPublicArticles(ArticleRepository $ArticleRepository) : response
+    public function GdPublicArticles(ArticleRepository $ArticleRepository, Request $request ) : response
     {
-        // récupère tous les articles en BDD
-        $articles = $ArticleRepository->findBy([],['title' => 'ASC']);
+        $tri = $request->query->get('tri');
+        $ordre = $request->query->get('ordre');
 
-        return $this->render('admin/page/articles.html.twig', [
+        if (!$tri) {
+            $tri ='id';
+            $ordre ='ASC';
+        }
+
+        // récupère tous les articles en BDD triés par ASC ou DESC
+        $articles = $ArticleRepository->findBy([],[$tri => $ordre]);
+
+       return $this->render('admin/page/articles.html.twig', [
             'articles' =>  $articles
         ]);
     }
@@ -43,10 +52,22 @@ class AdminController extends AbstractController
             $html404 = $this->renderView('admin/partial/404.html.twig');
             return new Response($html404, 404);
         }
-        // j'utilise la classe entity manager pour préparer la requête SQL de suppression cette requête n'est pas executée tout de suite
-        $entityManager->remove($article);
-        // j'execute la / les requête SQL préparée
-        $entityManager->flush();
+
+        try {
+            // j'utilise la classe entity manager pour préparer la requête SQL de suppression cette requête n'est pas executée tout de suite
+            $entityManager->remove($article);
+            // j'execute la / les requête SQL préparée
+            $entityManager->flush();
+
+            // permet d'enregistrer un message dans la session de PHP
+            // ce message sera affiché grâce à twig sur la prochaine page
+            $this->addFlash('success', 'Article bien supprimé !');
+
+        } catch(\Exception $exception){
+            return $this->render('admin/partial/error.html.twig', [
+                'errorMessage' => $exception->getMessage()
+            ]);
+        }
 
         return $this->redirectToRoute('adminArticles');
     }

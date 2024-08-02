@@ -1,14 +1,18 @@
 
 
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('style/adminStyle.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" >
     <title> {% block metatitle %} {% endblock %} </title>
 
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
+<body>
 <header>
     <div class="image">
         <img src="{{ asset('img/blog2.png') }}" alt="blog">
@@ -26,19 +30,36 @@
         <img src="{{ asset('img/blog1.png') }}" alt="">
     </div>
 </header>
+<main>
+
+{#
+vérifie si des messages flashes ont été enregistrés
+par un controleur. Si oui, on les affiche
+#}
+{% for message in app.flashes('success') %}
+<div class="success-message">
+    {{ message }}
+</div>
+{%  endfor %}
+
 
 {% block content %}
 {% endblock %}
 
+</main>
+
 <footer>
     <img src="{{ asset('img/blog3.png') }}" alt="">
         <div>
-            <ul>
-                <li>Mentions légales</li>
-                <li>contact</li>
-                <li>Crédits</li>
-                <li>et tout le reste</li>
-            </ul>
+            <nav>
+                <ul>
+                    <li>Mentions légales</li>
+                    <li>contact</li>
+                    <li>Crédits</li>
+                    <li>et tout le reste</li>
+                </ul>
+            </nav>
         </div>
     </footer>
 </body>
+</html>
