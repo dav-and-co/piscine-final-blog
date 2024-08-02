@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('style/articlesStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/adminStyle.css') }}">
     <title> {% block metatitle %} {% endblock %} </title>
 
     {% block javascripts %}
@@ -17,8 +17,8 @@
         <h3>LE BLOG de la PISCINE   -  ADMIN </h3>
         <ul>
             <li><a href="{{ path("home") }}"> Accueil </a> </li>
-            <li><a href="{{ path("GdPublicArticles") }}"> Les articles </a></li>
-            <li><a href="{{ path("GdPublicCategory") }}"> Les catégories</a></li>
+            <li><a href="{{ path("Articles") }}"> Les articles GP </a></li>
+            <li><a href="{{ path("Category") }}"> Les catégories GP</a></li>
             <li> Connexion</li>
         </ul>
     </div>

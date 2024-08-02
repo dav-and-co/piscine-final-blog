@@ -1,0 +1,99 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+header{
+    display: flex;
+    background-color:  #b45f5d;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    & img{
+        width : 100%;
+    }
+    & .image{
+        width : 10%;
+    }
+    & .central{
+        width : 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    & h3{
+        text-align: center;
+        font-family: fantasy;
+        font-size: 48px;
+        color: #fbeec1;
+        margin :15px 0;
+        width: 100% ;
+
+    }
+    li {
+        list-style: none;
+    }
+    & ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    & a{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #fbeec1;
+    }
+}
+
+footer{
+    background-color: #b45f5d;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & img{
+        width : 5%;
+    }
+    & p{
+        width : 20%;
+    }
+    li {
+        list-style: none;
+    }
+    & div{
+        width : 90%;
+    }
+    & ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+.admin-list-articles {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+.admin-article-image {
+    width: 100px;
+}
+
+.admin-article-table td{
+    border: 1px solid black;
+    text-align: center;
+}
+.arttd {
+    width: 50%;
+    margin: auto;
+}
+

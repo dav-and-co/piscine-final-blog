@@ -1,0 +1,51 @@
+
+
+
+{% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    blog : les articles
+{% endblock %}
+
+{% block content %}
+
+
+    <main>
+        <h1> Liste des Articles </h1>
+        <section class="admin-list-articles">
+            <table class="admin-article-table">
+                <tr>
+                    <td>catégorie</td>
+                    <td>Id</td>
+                    <td>Image</td>
+                    <td>Titre</td>
+                    <td>Date</td>
+                    <td>Est publié</td>
+                    <td>à supprimer</td>
+                </tr>
+
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article.category.title }}</td>
+                    <td>{{ article.id }}</td>
+                    <td><div class="arttd"><img class="admin-article-image" src="{{ article.image }}" alt="{{ article.title }}" /></div></td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.createdAt | date('d-m-Y') }}</td>
+                    <td>
+                        {% if article.isPublished %}
+                            <p>Oui</p>
+                        {% else %}
+                            <p>Non</p>
+                        {% endif %}
+                    </td>
+                    <td><a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">oui</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </main>
+
+
+{% endblock %}
+
+

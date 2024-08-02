@@ -5,7 +5,7 @@
 declare(strict_types=1);
 
 // on crée un namespace qui permet d'identifier le chemin afin d'utiliser la classe actuelle
-namespace App\Controller\GdPublic;
+namespace App\Controller\gdPublic;
 
 // on appelle le chemin (namespace) des classes utilisées et symfony fera le require de ces classes
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
