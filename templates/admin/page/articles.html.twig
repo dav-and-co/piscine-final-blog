@@ -36,7 +36,7 @@
                             <i class="fa-solid fa-chevron-down"></i></a>
                     </td>
                     <td>Est publié</td>
-                    <td>à supprimer</td>
+                    <td>actions</td>
                 </tr>
 
                 {% for article in articles %}
@@ -53,7 +53,8 @@
                             <p>Non</p>
                         {% endif %}
                     </td>
-                    <td><a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">oui</a></td>
+                    <td><a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">supprimer</a>
+                    <a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">modifier</a></td>
                 </tr>
                 {% endfor %}
             </table>

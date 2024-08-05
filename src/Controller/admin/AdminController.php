@@ -8,6 +8,8 @@ declare(strict_types=1);
 namespace App\Controller\admin;
 
 // on appelle le chemin (namespace) des classes utilisées et symfony fera le require de ces classes
+use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +34,7 @@ class AdminController extends AbstractController
 
         if (!$tri) {
             $tri ='id';
-            $ordre ='ASC';
+            $ordre ='DESC';
         }
 
         // récupère tous les articles en BDD triés par ASC ou DESC
@@ -70,6 +72,32 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('adminArticles');
+    }
+
+    #[Route('/admin/insert', 'admin_insert_article')]
+    public function insertArticle(Request $request, EntityManagerInterface $entityManager)
+    {
+        $article = new Article();
+
+        $articleCreateForm = $this->createForm(ArticleType::class, $article);
+
+        $articleCreateForm->handleRequest($request);
+
+        if($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Article bien ajouté !');
+            return $this->redirectToRoute('admin_insert_article');
+        }
+
+        $articleCreateFormView = $articleCreateForm->createView();
+
+
+        return $this->render('admin/page/insert_article.html.twig', [
+            'articleForm' => $articleCreateFormView
+        ]);
+
     }
 
 }

@@ -55,6 +55,12 @@ class Article
         return $this;
     }
 
+    public function __construct() {
+      $this->createdAt = new \DateTime('NOW');
+      $this->updateAt = new \DateTime('NOW');
+    }
+
+
     public function getContent(): ?string
     {
         return $this->content;
@@ -115,12 +121,12 @@ class Article
         return $this;
     }
 
-    public function isPublished(): ?bool
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
-    public function setPublished(bool $isPublished): static
+    public function setIsPublished(bool $isPublished): static
     {
         $this->isPublished = $isPublished;
 

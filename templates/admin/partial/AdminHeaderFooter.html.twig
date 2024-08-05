@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('style/adminStyle.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title> {% block metatitle %} {% endblock %} </title>
 
     {% block javascripts %}
@@ -20,11 +18,9 @@
     <div class="central">
         <h3>LE BLOG de la PISCINE   -  ADMIN </h3>
         <ul>
-            <li><a href="{{ path("home") }}"> Accueil </a> </li>
-            <li><a href="{{ path("Articles") }}"> Les articles GP </a></li>
-            <li><a href="{{ path("Category") }}"> Les catégories GP</a></li>
-            <li> Connexion</li>
-        </ul>
+            <li><a href="{{ path("home") }}"> Accueil guest</a> </li>
+            <li><a href="{{ path("admin_insert_article") }}"> ajout d'un article </a></li>
+            </ul>
     </div>
     <div class="image">
         <img src="{{ asset('img/blog1.png') }}" alt="">
@@ -32,10 +28,8 @@
 </header>
 <main>
 
-{#
-vérifie si des messages flashes ont été enregistrés
-par un controleur. Si oui, on les affiche
-#}
+{#  vérifie si des messages flashs ont été enregistrés par un controleur. Si oui, les affiche #}
+
 {% for message in app.flashes('success') %}
 <div class="success-message">
     {{ message }}
