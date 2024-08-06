@@ -1,0 +1,43 @@
+{% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    admin : les articles
+{% endblock %}
+
+{% block content %}
+
+    <h1>Category index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Color</th>
+                <th>CreatedAt</th>
+                <th>UpdateAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.title }}</td>
+                <td>{{ category.color }}</td>
+                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ category.updateAt ? category.updateAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_update_category', {'id': category.id}) }}">Modifier</a>
+                    <a href="{{ path('admin_delete_category', {'id': category.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

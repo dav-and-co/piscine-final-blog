@@ -41,7 +41,7 @@
 
                 {% for article in articles %}
                 <tr>
-                    <td>{{ article.category.title }}</td>
+                    <td>{{ article.category ? article.category.title : "sans catégorie"}}</td>
                     <td>{{ article.id }}</td>
                     <td><div class="arttd"><img class="admin-article-image" src="{{ article.image }}" alt="{{ article.title }}" /></div></td>
                     <td>{{ article.title }}</td>
@@ -54,7 +54,7 @@
                         {% endif %}
                     </td>
                     <td><a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">supprimer</a>
-                    <a class="pale" href ="{{ path( 'admin_delete',{id: article.id})}}">modifier</a></td>
+                    <a class="pale" href ="{{ path( 'admin_update_article',{id: article.id})}}">modifier</a></td>
                 </tr>
                 {% endfor %}
             </table>

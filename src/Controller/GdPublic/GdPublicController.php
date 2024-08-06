@@ -41,7 +41,7 @@ class GdPublicController extends AbstractController
         $article = $ArticleRepository->find($id);
 
     //si pas de article ou d'article publié, affichage personnalisé
-        if (!$article || !$article->isPublished()) {
+        if (!$article || !$article->getIsPublished()) {
             $html404 = $this->renderView('gdPublic/partial/404.html.twig');
             return new Response($html404, 404);
         }

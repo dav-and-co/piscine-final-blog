@@ -1,0 +1,17 @@
+{% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    admin : ajout catégorie
+{% endblock %}
+
+{% block content %}
+
+    <h1>Création d'une nouvelle Categorie</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>{{ button_label|default('validation') }}</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

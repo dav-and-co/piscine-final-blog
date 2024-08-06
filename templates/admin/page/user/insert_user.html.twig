@@ -1,0 +1,36 @@
+
+
+
+{% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    admin : ajout user
+{% endblock %}
+
+{% block content %}
+
+    <h1>Création d'un user</h1>
+
+
+    <form method="post">
+
+        <div>
+            <label>
+                usernane
+                <input type="text" name="username" />
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Mot de passe
+                <input type="password" name="password" />
+            </label>
+        </div>
+
+        <input type="submit" value="Créer"/>
+
+    </form>
+
+
+{% endblock %}

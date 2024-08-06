@@ -1,0 +1,14 @@
+{% extends 'admin/partial/AdminHeaderFooter.html.twig' %}
+
+{% block metatitle %}
+    admin : ajout catégorie
+{% endblock %}
+
+{% block content %}
+
+    <h1>modifier une catégorie</h1>
+
+    {{ include('admin_category/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+{% endblock %}

@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('style/adminStyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('style/app.css') }}">
     <title> {% block metatitle %} {% endblock %} </title>
 
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% endblock %}
 </head>
 <body>
 <header>
@@ -19,14 +17,20 @@
         <h3>LE BLOG de la PISCINE   -  ADMIN </h3>
         <ul>
             <li><a href="{{ path("home") }}"> Accueil guest</a> </li>
+            <li><a href="{{ path("adminArticles") }}"> liste des articles </a></li>
             <li><a href="{{ path("admin_insert_article") }}"> ajout d'un article </a></li>
+            <li><a href="{{ path("adminCategories") }}"> liste des catégories </a></li>
+            <li><a href="{{ path("admin_insert_category") }}"> ajout d'une catégorie </a></li>
+            <li><a href="{{ path("admin_insert_user") }}"> ajout d'un user </a></li>
+            <li><a href="{{ path("app_logout") }}"> déconnexion </a></li>
             </ul>
     </div>
     <div class="image">
         <img src="{{ asset('img/blog1.png') }}" alt="">
     </div>
 </header>
-<main>
+
+
 
 {#  vérifie si des messages flashs ont été enregistrés par un controleur. Si oui, les affiche #}
 

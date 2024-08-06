@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="{{ asset('style/articlesStyle.css') }}">
     <title> {% block metatitle %} {% endblock %} </title>
 
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% endblock %}
 </head>
 <header>
     <div class="image">
@@ -20,8 +17,7 @@
             <li><a href="{{ path("home") }}"> Accueil </a> </li>
             <li><a href="{{ path("Articles") }}"> Les articles </a></li>
             <li><a href="{{ path("Category") }}"> Les catégories</a></li>
-            <li><a href="{{ path("adminArticles") }}"> articles admin</a></li>
-            <li> Connexion</li>
+            <li><a href="{{ path("adminArticles") }}"> Connexion</a></li>
         </ul>
     </div>
     <div class="image">

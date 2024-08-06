@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 // on étend la class AbstractController qui permet d'utiliser des fonctions utilitaires pour les controllers (twig etc)
-class AdminController extends AbstractController
+class AdminArticleController extends AbstractController
 
 {
     // localhost/piscine-final-blog/public/
@@ -27,21 +27,21 @@ class AdminController extends AbstractController
 
     // function qui récupère les données de la BDD
     #[Route('/admin/Articles', name: 'adminArticles')]
-    public function GdPublicArticles(ArticleRepository $ArticleRepository, Request $request ) : response
+    public function GdPublicArticles(ArticleRepository $ArticleRepository, Request $request): response
     {
         $tri = $request->query->get('tri');
         $ordre = $request->query->get('ordre');
 
         if (!$tri) {
-            $tri ='id';
-            $ordre ='DESC';
+            $tri = 'id';
+            $ordre = 'DESC';
         }
 
         // récupère tous les articles en BDD triés par ASC ou DESC
-        $articles = $ArticleRepository->findBy([],[$tri => $ordre]);
+        $articles = $ArticleRepository->findBy([], [$tri => $ordre]);
 
-       return $this->render('admin/page/articles.html.twig', [
-            'articles' =>  $articles
+        return $this->render('admin/page/articles.html.twig', [
+            'articles' => $articles
         ]);
     }
 
@@ -65,7 +65,7 @@ class AdminController extends AbstractController
             // ce message sera affiché grâce à twig sur la prochaine page
             $this->addFlash('success', 'Article bien supprimé !');
 
-        } catch(\Exception $exception){
+        } catch (\Exception $exception) {
             return $this->render('admin/partial/error.html.twig', [
                 'errorMessage' => $exception->getMessage()
             ]);
@@ -83,7 +83,7 @@ class AdminController extends AbstractController
 
         $articleCreateForm->handleRequest($request);
 
-        if($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+        if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -95,6 +95,31 @@ class AdminController extends AbstractController
 
 
         return $this->render('admin/page/insert_article.html.twig', [
+            'articleForm' => $articleCreateFormView
+        ]);
+
+    }
+//mise à jour d'un article
+    #[Route('/admin/articles/update/{id}', 'admin_update_article')]
+    public function updateArticle(int $id, Request $request, EntityManagerInterface $entityManager, ArticleRepository $articleRepository)
+    {
+        $article = $articleRepository->find($id);
+
+        $articleCreateForm = $this->createForm(ArticleType::class, $article);
+
+        $articleCreateForm->handleRequest($request);
+
+        if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+            $article->getUpdateAt(new \DateTime("NOW"));
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'article enregistré');
+        }
+
+        $articleCreateFormView = $articleCreateForm->createView();
+
+        return $this->render('admin/page/update_article.html.twig', [
             'articleForm' => $articleCreateFormView
         ]);
 
